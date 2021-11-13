@@ -6,12 +6,9 @@ CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 
 # Create private key file
-su -
-apt-get install sudo -y
-usermod -aG sudo root
-sudo sh -c "echo 'deb https://gitsecret.jfrog.io/artifactory/git-secret-deb git-secret main' >> /etc/apt/sources.list"
-wget -qO - 'https://gitsecret.jfrog.io/artifactory/api/gpg/key/public' | sudo apt-key add -
-sudo apt-get update && sudo apt-get install -y git-secret
+git clone https://github.com/sobolevn/git-secret.git git-secret
+cd git-secret && make build
+PREFIX="/usr/local" make install
 echo $GPG_PRIVATE_KEY > $BUILD_DIR/private_key.gpg
 # Import private key
 gpg --import $BUILD_DIR/private_key.gpg
