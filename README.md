@@ -12,5 +12,5 @@ The script with generate your GPG as a private_key.gpg and then use it to reveal
 To add to your application, run:
 
 ```
-heroku buildpacks:set https://github.com/buyersight/heroku-google-application-credentials-buildpack.git -a your-app-name
+heroku buildpacks:set https://github.com/CodeWorldSo/gitsecret-buildpack.git -a your-app-name
 ```
